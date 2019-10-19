@@ -61,7 +61,7 @@ class LinkedListTest < Minitest::Test
     assert_equal 2, @list.count
 
     string = "The Rhodes family, followed by the Hardy family"
-    assert_equal @list.string, string
+    assert_equal @list.to_string, string
   end
 
   def test_empty_returns_true_when_head_is_nil

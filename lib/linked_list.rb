@@ -28,11 +28,18 @@ class LinkedList
   end
 
   def to_string
-    "The #{self.head.surname} family"
+    return "" if empty?
+    return sentence_starter if head.tail?
+    stringify_node(head.next_node, sentence_starter)
   end
 
   def empty?
     head.nil?
+  end
+
+  def stringify_node(node, sentence)
+    return concat(sentence, node) if node.tail?
+    stringify_node(node.next_node, concat(sentence, node))
   end
 
   private
@@ -40,5 +47,13 @@ class LinkedList
   def count_node(node, counter)
     return counter if node.tail?
     count_node(node.next_node, counter += 1)
+  end
+
+  def concat(sentence, node)
+    "#{sentence}, followed by the #{node.surname} family"
+  end
+
+  def sentence_starter
+    "The #{head.surname} family"
   end
 end

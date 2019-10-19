@@ -25,7 +25,11 @@ class NodeTest < Minitest::Test
   end
 
   def test_next_node_can_change_node_state
-    assert_equal 'Thomas', @subject.next_node
+      subject = Node.new('Berke')
+      data = 'Thomas'
+      subject.next_node = data
+      result = subject.next_node
+    assert_equal 'Thomas', result 
   end
 
 
